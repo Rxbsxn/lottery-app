@@ -1,5 +1,4 @@
 class AuctionsController < ApplicationController
-before_action :current_user
   def index
     @auction = Auction.all
   end
@@ -16,6 +15,8 @@ before_action :current_user
   end
 end
 
+
+
   def destroy
     @auction = Auction.find(params[:id])
     @auction.destroy
@@ -25,6 +26,7 @@ end
   def show
     @auction = Auction.find(params[:id])
   end
+
 
   private
   def auction_params
