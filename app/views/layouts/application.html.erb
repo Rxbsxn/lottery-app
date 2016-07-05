@@ -3,20 +3,45 @@
   <head>
     <title>Lottery</title>
     <%= csrf_meta_tags %>
-
+        <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
+        <script src="/node_modules/material-design-lite/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if current_user %>
-      <%= current_user.email %>
-      <%= link_to 'Sign-out', 'users/sign_out', method: :delete %>
-    <% else %>
-      <%= link_to 'Sign-up', '/users/sign_up' %>
-      <%= link_to 'Sign-in', '/users/sign_in' %>
-    <% end %>
 
-    <%= yield %>
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <% if current_user %>
+          <span class="mdl-layout-title">Hi, <%= current_user.email %></span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <a class="mdl-navigation__link" href=><%= link_to 'Sign-out', 'users/sign_out', method: :delete %></a>
+            <% else %>
+            <a class="mdl-navigation__link" href="users/sign_in">Sign-in</a>
+            <a class="mdl-navigation__link" href="users/sign_up">Sign-up</a>
+            <% end %>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+
+        <nav class="mdl-navigation">
+
+          
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content"><%= yield %></div>
+      </main>
+    </div>
+
   </body>
 </html>
