@@ -1,4 +1,5 @@
 class AuctionsController < ApplicationController
+before_action :current_user
   def index
     @auction = Auction.all
   end
@@ -19,6 +20,10 @@ end
     @auction = Auction.find(params[:id])
     @auction.destroy
     redirect_to auctions_path
+  end
+
+  def show
+    @auction = Auction.find(params[:id])
   end
 
   private

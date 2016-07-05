@@ -11,6 +11,7 @@
     <td><%= auction.name %></td>
     <td><%= auction.content %></td>
      <td><%= link_to 'Destroy', auction_path(auction), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+     <td><%= link_to 'Show',  auction_path(auction) %> </td>
 
   </tr>
 
