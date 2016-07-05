@@ -1,13 +1,33 @@
+<style>
+.centered {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  margin:auto;
+  background-color:#aaa;
+  text-align: center;
+
+}
+
+</style>
+
+<div class="centered">
+<br>
 <p>
-  <strong>Title:</string>
+  <img src="<%= @auction.imageUrl %>">
+</p>
+
+<p>
+  <strong>Title:</strong>
     <%= @auction.name %>
 </p>
 <p>
   <strong>Description:</strong>
   <%= @auction.content %>
+
 </p>
 
-
-
-
-<%= link_to 'Back', auctions_path %>
+<p>
+  <strong>Bidders:</strong>
+</p>
+</div>
