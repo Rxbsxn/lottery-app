@@ -1,43 +1,44 @@
-<center><h1>List of auctions</h1></center>
-
-
-
+<center>
+    <h1>List of auctions</h1>
+</center>
 
 <style>
-.demo-card-square.mdl-card {
-  width: 320px;
-  height: 320px;
-  margin: auto;
+    .demo-card-square.mdl-card {
+        width: 320px;
+        height: 320px;
+        margin: auto;
 
+    }
+    .demo-card-square > .mdl-card__title {
+        color: #fff;
+        background: url(") bottom right 15% no-repeat #46B6AC;
+    }
 
-
-}
-.demo-card-square > .mdl-card__title {
-  color: #fff;
-  background: url() bottom right 15% no-repeat #46B6AC;
-}
 </style>
 <% @auction.each do |auction| %>
 <div class="demo-card-square mdl-card mdl-shadow--2dp">
-  <img src="<%= auction.imageUrl %>"></img>
-  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text"><%= auction.name%></h2>
-  </div>
-  <div class="mdl-card__supporting-text">
-    <%= auction.content %>
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      <%= link_to 'Read more', auction_path(auction) %>
-    </a>
-  </div>
+    <img src="<%= auction.imageUrl %>"></img>
+    <div class="mdl-card__title mdl-card--expand">
+        <h2 class="mdl-card__title-text"><%= auction.name%></h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+        <%= auction.content %>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            <%= link_to 'Read more', auction_path(auction) %>
+        </a>
+    </div>
 </div>
 <br>
 <% end %>
+
+<%  if current_user and current_user.has_role? :admin    %>
 <%= link_to 'auctions/new' do %>
 <div style="text-align:center; padding-top: 50px;">
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
-  Add new item to bid
-</button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+        Add new item to bid
+    </button>
 </div>
+<% end %>
 <% end %>
