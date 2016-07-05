@@ -1,15 +1,23 @@
 <h1>List of auctions</h1>
 
-<% @auction.each do |auction| %>
-<p>
-  <%= auction.name %>
-</p>
-<p>
-  <%= auction.content %>
-</p>
-<% end %>
+<table>
+  <tr>
+    <th>Item's name</th>
+    <th>Description</th>
+  </tr>
+  <% @auction.each do |auction| %>
+  <tr>
+
+    <td><%= auction.name %></td>
+    <td><%= auction.content %></td>
+     <td><%= link_to 'Destroy', auction_path(auction), method: :delete, data: { confirm: 'Are you sure?'} %> </td>
+
+  </tr>
+
+  <% end %>
+</table>
 <%= link_to 'auctions/new' do %>
 <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-  <i class="material-icons">add</i>
+  <i class="material-icons">add item to bid</i>
 </button>
 <% end %>
