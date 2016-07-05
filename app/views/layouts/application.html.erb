@@ -32,14 +32,10 @@
         </div>
       </header>
       <div class="mdl-layout__drawer">
-        <% if current_user %>
-        <span class="mdl-layout-title">Hi, <%= current_user.email %></span>
+
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="users/sign_out">Sign-out</a>
-          <% else %>
-          <a class="mdl-navigation__link" href="users/sign_in">Sign-in</a>
-          <a class="mdl-navigation__link" href="users/sign_up">Sign-up</a>
-          <% end %>
+
+          
         </nav>
       </div>
       <main class="mdl-layout__content">
