@@ -7,9 +7,9 @@ class AuctionsController < ApplicationController
     @auction = Auction.new
   end
   def create
-  @auction = Article.new(article_params)
+  @auction = Auction.new(auction_params)
   if @auction.save
-    redirect_to '/auctions'
+    redirect_to auctions_path
   else
     render 'new'
   end

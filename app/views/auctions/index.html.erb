@@ -1,2 +1,15 @@
 <h1>List of auctions</h1>
- 
+
+<% @auction.each do |auction| %>
+<p>
+  <%= auction.name %>
+</p>
+<p>
+  <%= auction.content %>
+</p>
+<% end %>
+<%= link_to 'auctions/new' do %>
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+  <i class="material-icons">add</i>
+</button>
+<% end %>
