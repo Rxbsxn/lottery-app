@@ -11,10 +11,12 @@
 
 .demo-card-square > .mdl-card__title {
         color: #fff;
-        background: bottom right 15% no-repeat #46B6AC;
+        background: bottom right 10% no-repeat #46B6AC;
 }
 .johny {
   padding-left: 60px;
+}
+.read-more {
 }
 </style>
 
@@ -30,8 +32,15 @@
   <div class="mdl-card__actions mdl-card--border">
     <div class="johny">
     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      <%= link_to 'Read more', auction_path(auction) %>
+
+      <% if current_user and current_user.has_role? :admin %>
       <%= link_to 'Destroy', auction_path(auction), method: :delete, data: { confirm: 'Are you sure?'} %>
+      <%= link_to 'Read more', auction_path(auction) %>
+      <% else %>
+      <div clas ='read-more'>
+      <%= link_to 'Read more', auction_path(auction) %>
+    </div>
+      <% end %>
     </a>
   </div>
   </div>
