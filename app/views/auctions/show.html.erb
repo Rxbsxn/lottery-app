@@ -31,20 +31,18 @@
   <%= link_to 'Bid' , bid_auction_path(@auction), method: :post %>
 
 </p>
-<p>
 
-  <strong>Last Bidder:</strong>
-  <%= @auction.users.last.email %>
-
-
-</p>
 
 
   <strong>Bidders:</strong>
   <p>
+
+
+
   <%= @auction.users.each do |user| %>
     <%= user.email %>
 
 </p>
+
 <% end %>
 </div>
