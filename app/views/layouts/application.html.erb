@@ -23,10 +23,26 @@
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
-            <a class="mdl-navigation__link" href=><%= link_to 'Sign-out', 'users/sign_out', method: :delete %></a>
+            <a class="mdl-navigation__link" href='users/sign_out' rel='nofollow' data-method="delete">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" data-method="delete" rel='nofollow' >
+              Sign out
+              </button>
+              
+              </a>
             <% else %>
-            <a class="mdl-navigation__link" href="users/sign_in">Sign-in</a>
-            <a class="mdl-navigation__link" href="users/sign_up">Sign-up</a>
+            <a class="mdl-navigation__link" href=""><%= link_to 'users/sign_in' do %>
+              <button class="mdl-button mdl-js-button mdl-button--raised">
+
+                  Sign in
+              </button>
+              <% end %>
+            </a>
+            <a class="mdl-navigation__link" href="users/sign_up"><%= link_to 'users/sign_up' do %>
+              <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+                Sign up
+                </button>
+              <% end %>
+            </a>
             <% end %>
           </nav>
         </div>
@@ -35,7 +51,7 @@
 
         <nav class="mdl-navigation">
 
-          
+
         </nav>
       </div>
       <main class="mdl-layout__content">

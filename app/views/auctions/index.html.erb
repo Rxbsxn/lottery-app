@@ -3,16 +3,17 @@
 </center>
 
 <style>
-    .demo-card-square.mdl-card {
+.demo-card-square.mdl-card {
         width: 320px;
         height: 320px;
         margin: auto;
+}
 
-    }
-    .demo-card-square > .mdl-card__title {
+.demo-card-square > .mdl-card__title {
         color: #fff;
         background: bottom right 15% no-repeat #46B6AC;
-    }
+}
+
 </style>
 
 <% @auction.each do |auction| %>
@@ -25,11 +26,12 @@
     <%= auction.content %>
   </div>
   <div class="mdl-card__actions mdl-card--border">
+    <div class="johny">
     <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
       <%= link_to 'Read more', auction_path(auction) %>
       <%= link_to 'Destroy', auction_path(auction), method: :delete, data: { confirm: 'Are you sure?'} %>
-      <%= link_to 'Show',  auction_path(auction) %>
     </a>
+  </div>
   </div>
 </div>
 <br>
