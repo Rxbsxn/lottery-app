@@ -25,6 +25,10 @@
    background: url('assets/demos/dog.p') bottom right 15% no-repeat #46B6AC;
 }
 
-#bid-button {
-  margin: auto;
+
+
+.sign-in {
+    margin-left: auto;
+    padding-right: 50px;
+    width: 100px
 }

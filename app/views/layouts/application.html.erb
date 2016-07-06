@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+
+    </style>
   </head>
 
   <body>
@@ -27,22 +30,26 @@
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" data-method="delete" rel='nofollow' >
               Sign out
               </button>
-              
+
               </a>
             <% else %>
-            <a class="mdl-navigation__link" href=""><%= link_to 'users/sign_in' do %>
+            <div class="sign-in">
+            <a class="mdl-navigation__link" style="position: absolute;" href=""><%= link_to 'users/sign_in' do %>
               <button class="mdl-button mdl-js-button mdl-button--raised">
 
                   Sign in
               </button>
               <% end %>
             </a>
+          </div>
+          <div class="sign-up">
             <a class="mdl-navigation__link" href="users/sign_up"><%= link_to 'users/sign_up' do %>
               <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
                 Sign up
                 </button>
               <% end %>
             </a>
+          </div>
             <% end %>
           </nav>
         </div>
