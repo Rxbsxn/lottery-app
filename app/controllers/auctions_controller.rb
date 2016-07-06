@@ -9,6 +9,13 @@ class AuctionsController < ApplicationController
   def new
     @auction = Auction.new
   end
+
+  def bid
+    auction = Auction.find(params[:id])
+    auction.users << current_user
+    redirect_to auction
+  end
+
   def create
   @auction = Auction.new(auction_params)
   if @auction.save
