@@ -1,0 +1,17 @@
+
+
+<%= form_for @bids do |f| %>
+  <p>
+    <%= f.label :bidders %><br>
+    <%= f.text_field :bidders %>
+  </p>
+
+  <p>
+    <%= f.label :amount %><br>
+    <%= f.text_area :amount %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
