@@ -1,5 +1,5 @@
 class AuctionsController < ApplicationController
-  before_action :is_admin , except: [:index, :show]
+  before_action :is_admin , except: [:index, :show,]
 
 
   def index
@@ -28,6 +28,7 @@ end
 
   def show
     @auction = Auction.find(params[:id])
+    # @bid = Bid.new
   end
 
 
