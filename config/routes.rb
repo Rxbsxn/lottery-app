@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :auctions, only: [:index, :new, :create, :destroy, :show] do
+    
     member do
       post :bid
     end
