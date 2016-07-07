@@ -1,57 +1,52 @@
 <style>
-.centered {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  margin:auto;
-  background-color: #3CBA6A;
-  text-align: center;
+    .centered {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        background-color: #3CBA6A;
+        text-align: center;
 
-}
+    }
 
 </style>
 
 <div class="centered">
-<br>
-<p>
-  <img src="<%= @auction.imageUrl %> ">
-</p>
+    <br>
+    <p>
+        <img src="<%= @auction.imageUrl %> ">
+    </p>
 
-<p>
-  <strong>Title:</strong>
-    <%= @auction.name %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @auction.content %>
+    <p>
+        <strong>Title:</strong>
+        <%= @auction.name %>
+    </p>
+    <p>
+        <strong>Description:</strong>
+        <%= @auction.content %>
 
-</p>
-<p>
-  <% if current_user and current_user.has_role? :admin %>
-<<<<<<< HEAD
-    <h1> Administrators can't place bids </h1>
+    </p>
+    <p>
+
+        <% if current_user and current_user.has_role? :admin %>
+        <%= link_to 'Draw', draw_auction_path(@auction), method: :post%>
+        <strong>
+          <%= @winner %>
+        </strong>
     <% else %>
-=======
-   Let's draw
-   <%= link_to 'Draw', draw_auction_path(@auction), method: :post%>
-   <%= @winner %>
-  <% else %>
->>>>>>> d2dcd164df7d760936285f0441bd4aeabeb5783d
-  <%= link_to 'Bid' , bid_auction_path(@auction), method: :post %>
-  <% end %>
-</p>
 
+        <%= link_to 'Bid' , bid_auction_path(@auction), method: :post %>
+        <% end %>
 
+    </p>
 
-  <strong>Bidders:</strong>
-  <p>
+    <strong>Bidders:</strong>
+    <p>
 
+        <% @auction.users.each do |user| %>
+        <%= user.email %>
 
+    </p>
 
-  <% @auction.users.each do |user| %>
-    <%= user.email %>
-
-</p>
-
-<% end %>
+    <% end %>
 </div>

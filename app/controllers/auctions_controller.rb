@@ -1,10 +1,10 @@
 class AuctionsController < ApplicationController
   before_action :is_admin , except: [:index, :show, :bid]
-<<<<<<< HEAD
+
   before_action :authenticate_user! , only: [:bid]
-=======
+
   before_action :authenticate_user!, only: [:bid]
->>>>>>> d2dcd164df7d760936285f0441bd4aeabeb5783d
+
 
 
   def index
@@ -23,9 +23,10 @@ class AuctionsController < ApplicationController
 
 
   def draw
-    auction = Auction.find(params[:id])
-    users = auction.users.all
-    winner = users.order('RANDOM()').last
+    @auction = Auction.find(params[:id])
+    users = @auction.users.all
+    @winner = users.order('RANDOM()').last
+    redirect_to @auction
   end
 
   def create
