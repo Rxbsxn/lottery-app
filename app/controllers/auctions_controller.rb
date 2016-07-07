@@ -3,12 +3,9 @@ class AuctionsController < ApplicationController
 
 
   def index
+    @q = Auction.ransack(params[:search_params])
+    @product = @q.result(distinct: true).page(params[:page])
     @auction = Auction.page(params[:page]).per(6)
-  end
-
-  def search
-    @names = Auction.ransack(params[:names])
-    @product = @names.result(distinct: true)
   end
 
   def new
@@ -55,6 +52,9 @@ end
     params.require(:auction).permit(:name, :content, :imageUrl)
   end
 
+  def search_params
+    params.require(:auction).permit(:name)
+  end
   def is_admin
     unless  current_user && current_user.has_role?(:admin)
       redirect_to auctions_path
