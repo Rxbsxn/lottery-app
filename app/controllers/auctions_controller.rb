@@ -25,7 +25,7 @@ class AuctionsController < ApplicationController
   def draw
     auction = Auction.find(params[:id])
     users = auction.users.all
-    users.order('RANDOM()').last
+    winner = users.order('RANDOM()').last
   end
 
   def create
