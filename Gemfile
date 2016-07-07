@@ -16,6 +16,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'rolify'
 gem 'material_design_lite-sass'
+gem 'kaminari'
+gem 'ffaker'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

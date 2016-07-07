@@ -46,6 +46,8 @@
 <br>
 <% end %>
 
+<%= paginate @auction %>
+
 <%  if current_user and current_user.has_role? :admin    %>
 <%= link_to 'auctions/new' do %>
 <div style="text-align:center; padding-top: 50px;">

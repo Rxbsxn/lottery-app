@@ -3,7 +3,7 @@ class AuctionsController < ApplicationController
 
 
   def index
-    @auction = Auction.all
+    @auction = Auction.page(params[:page]).per(6)
   end
 
   def new
@@ -14,6 +14,12 @@ class AuctionsController < ApplicationController
     auction = Auction.find(params[:id])
     auction.users << current_user
     redirect_to auction
+  end
+
+  def draw
+    auction = Auction.find(params[:id])
+    users = auction.users.all
+
   end
 
   def create
