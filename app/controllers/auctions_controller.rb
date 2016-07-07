@@ -6,6 +6,11 @@ class AuctionsController < ApplicationController
     @auction = Auction.page(params[:page]).per(6)
   end
 
+  def search
+    @names = Auction.ransack(params[:names])
+    @product = @names.result(distinct: true)
+  end
+
   def new
     @auction = Auction.new
   end

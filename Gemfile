@@ -18,6 +18,10 @@ gem 'rolify'
 gem 'material_design_lite-sass'
 gem 'kaminari'
 gem 'ffaker'
+gem 'ransack'
+gem 'will_paginate'
+
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
