@@ -28,8 +28,15 @@
 </p>
 <p>
   <% if current_user and current_user.has_role? :admin %>
+<<<<<<< HEAD
     <h1> Administrators can't place bids </h1>
     <% else %>
+=======
+   Let's draw
+   <%= link_to 'Draw', draw_auction_path(@auction), method: :post%>
+   <%= @winner %>
+  <% else %>
+>>>>>>> d2dcd164df7d760936285f0441bd4aeabeb5783d
   <%= link_to 'Bid' , bid_auction_path(@auction), method: :post %>
   <% end %>
 </p>
