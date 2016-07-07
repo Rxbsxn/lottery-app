@@ -7,6 +7,10 @@ class AuctionsController < ApplicationController
     @auction = @q.result.page(params[:page])
   end
 
+  def search
+
+  end
+
   def new
     @auction = Auction.new
   end

@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-20.times do
+40.times do
   Auction.create(name: FFaker::Product.product_name, content: FFaker::Lorem.sentences.join(' '), imageUrl: FFaker::Avatar.image)
 end
