@@ -19,10 +19,10 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-          <!-- Title -->
+
           <% if current_user %>
           <span class="mdl-layout-title">Hi, <%= current_user.email %></span>
-          <!-- Add spacer, to align navigation to the right -->
+
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
@@ -32,25 +32,27 @@
               </button>
 
               </a>
+
             <% else %>
             <div class="sign-in">
-            <a class="mdl-navigation__link" style="position: absolute;" href=""><%= link_to 'users/sign_in' do %>
+            <a class="mdl-navigation__link" href="/users/sign_in">
               <button class="mdl-button mdl-js-button mdl-button--raised">
 
                   Sign in
               </button>
-              <% end %>
+
             </a>
           </div>
           <div class="sign-up">
-            <a class="mdl-navigation__link" href="users/sign_up"><%= link_to 'users/sign_up' do %>
+            <a class="mdl-navigation__link" href="/users/sign_up">
               <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
                 Sign up
                 </button>
-              <% end %>
+
             </a>
           </div>
             <% end %>
+            <a href="/auctions"><i class="material-icons">home</i></a>
           </nav>
         </div>
       </header>

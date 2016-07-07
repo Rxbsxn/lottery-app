@@ -20,6 +20,7 @@ gem 'kaminari'
 gem 'ffaker'
 gem 'ransack'
 gem 'will_paginate'
+gem 'carrierwave'
 
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
