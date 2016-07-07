@@ -15,17 +15,24 @@
         background: bottom right 10% no-repeat #46B6AC;
 }
 .johny {
-  padding-left: 60px;
+  text-align: right;
+}
+
+.search {
+  text-align: center;
+  width: 100%;
+  margin: auto;
 }
 </style>
+<div class="search">
 <p>
   <%= search_form_for @q do |f| %>
-  <%= f.label :name_cont %>
+  
   <%= f.search_field :name_cont %>
   <%= f.submit %>
   <% end %>
 </p>
-
+</div>
 <% @auction.each do |auction| %>
 <div class="demo-card-square mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--expand">
@@ -37,7 +44,6 @@
   </div>
   <div class="mdl-card__actions mdl-card--border">
     <div class="johny">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
 
       <% if current_user and current_user.has_role? :admin %>
       <%= link_to 'Destroy', auction_path(auction), method: :delete, data: { confirm: 'Are you sure?'} %>
