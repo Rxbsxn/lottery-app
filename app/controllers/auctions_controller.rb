@@ -26,6 +26,10 @@ class AuctionsController < ApplicationController
     auction = Auction.find(params[:id])
     users = auction.users.all
     winner = users.order('RANDOM()').last
+    auction.winner = winner
+    auction.save
+    byebug
+    redirect_to auction
   end
 
   def create

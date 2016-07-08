@@ -9,7 +9,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <style>
-
+    .home {
+      padding-top: 10px;
+      padding-left: 5px;
+    }
     </style>
   </head>
 
@@ -52,7 +55,7 @@
             </a>
           </div>
             <% end %>
-            <a href="/auctions"><i class="material-icons">home</i></a>
+            <a href="/auctions" class="home"><i class="material-icons">home</i></a>
           </nav>
         </div>
       </header>
