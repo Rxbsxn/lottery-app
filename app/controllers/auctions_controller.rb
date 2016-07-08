@@ -1,6 +1,10 @@
 class AuctionsController < ApplicationController
   before_action :is_admin , except: [:index, :show, :bid]
+
+  before_action :authenticate_user! , only: [:bid]
+
   before_action :authenticate_user!, only: [:bid]
+
 
 
   def index
@@ -16,19 +20,18 @@ class AuctionsController < ApplicationController
     @auction = Auction.new
   end
 
-  def bid
-    auction = Auction.find(params[:id])
-    auction.users << current_user
-    redirect_to auction
-  end
+
 
   def draw
+
     auction = Auction.find(params[:id])
     users = auction.users.all
     winner = users.order('RANDOM()').last
     auction.winner = winner
     auction.save
     redirect_to auction
+
+
   end
 
   def create
@@ -52,8 +55,19 @@ end
     @auction = Auction.find(params[:id])
     # @bid = Bid.new
   end
+  def bid
+    @auction = Auction.find(params[:id])
+      @auction.users << current_user
+      redirect_to @auction
+    end
 
 
+
+  end
+
+  def place_a_bid(bid,amount)
+
+  end
   private
   def auction_params
     params.require(:auction).permit(:name, :content, :imageUrl)
@@ -68,5 +82,3 @@ end
     end
 
   end
-
-end

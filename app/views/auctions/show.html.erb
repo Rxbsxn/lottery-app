@@ -1,29 +1,30 @@
 <style>
-.centered {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  margin:auto;
-  background-color: #3CBA6A;
-  text-align: center;
+    .centered {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        background-color: #3CBA6A;
+        text-align: center;
 
-}
+    }
 
 </style>
 
 <div class="centered">
-<br>
-<p>
-  <img src="<%= @auction.imageUrl %>">
-</p>
+    <br>
+    <p>
+        <img src="<%= @auction.imageUrl %> ">
+    </p>
 
-<p>
-  <strong>Title:</strong>
-    <%= @auction.name %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @auction.content %>
+    <p>
+        <strong>Title:</strong>
+        <%= @auction.name %>
+    </p>
+    <p>
+        <strong>Description:</strong>
+        <%= @auction.content %>
+
 
 </p>
 <p>
@@ -43,9 +44,13 @@
 </p>
 
 
+        <%= link_to 'Bid' , bid_auction_path(@auction), method: :post %>
+        <% end %>
 
-  <strong>Bidders:</strong>
-  <p>
+    </p>
+
+    <strong>Bidders:</strong>
+    <p>
 
 
     <% if @auction.users.empty? %>
@@ -59,4 +64,7 @@
 </p>
 
 <% end %>
+
+
+
 </div>
