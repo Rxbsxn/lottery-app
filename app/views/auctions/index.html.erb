@@ -37,9 +37,9 @@ body {
   background: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png");
   font-family: 'Montserrat Alternates', sans-serif;
 }
-.paginate {
-  padding-left: 50px;
-  margin-left: 50px;
+.pagination {
+  padding-left: 10px;
+  margin-left: 10px;
 }
 </style>
 <body>
@@ -87,6 +87,7 @@ body {
 <div clas="paginate">
 <%= paginate @auction %>
 </div>
+
 <%  if current_user and current_user.has_role? :admin    %>
 <%= link_to 'auctions/new' do %>
 <div style="text-align:center; padding-top: 50px;">
