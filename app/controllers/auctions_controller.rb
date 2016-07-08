@@ -28,7 +28,6 @@ class AuctionsController < ApplicationController
     winner = users.order('RANDOM()').last
     auction.winner = winner
     auction.save
-    byebug
     redirect_to auction
   end
 
