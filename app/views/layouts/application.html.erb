@@ -35,6 +35,7 @@
     .mdl-layout .mdl-js-layout .mdl-layout--fixed-header {
       font-family: 'Montserrat Alternates', sans-serif;
     }
+    
     </style>
   </head>
 
@@ -51,11 +52,13 @@
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
+
             <a class="mdl-navigation__link" href='/users/sign_out' rel='nofollow' data-method="delete">
+              <div class="sign-out">
             <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" data-method="delete" rel='nofollow' >
               Sign out
               </button>
-
+</div>
               </a>
 
             <% else %>
