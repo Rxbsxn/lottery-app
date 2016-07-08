@@ -1,3 +1,18 @@
+<style>
+ body {
+   background: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/footer_lodyas.png");
+   font-family: 'Montserrat Alternates', sans-serif;
+   margin-left: auto;
+
+
+ }
+ .body-builder {
+   margin: auto;
+   padding-left: 40%;
+ }
+</style>
+<body>
+<div class="body-builder">
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -23,4 +38,6 @@
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<%= render "devise/shared/links" %>
+</div>
+</body>
