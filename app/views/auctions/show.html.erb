@@ -15,6 +15,11 @@
     h1 {
       color: green;
     }
+
+    h3 {
+      color: #717171;
+    }
+
 </style>
 <body>
 <div class="centered">
@@ -59,7 +64,8 @@
 
 
     <% if @auction.users.empty? %>
-    <h1>There are no bidders yet </h1>
+    <h3>(There are no bidders yet)</h3>
+    <h4><b>Be the first!</b> </h4>
       <% else %>
       <% @auction.users.each do |user| %>
 <p>
