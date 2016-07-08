@@ -42,8 +42,12 @@
 
   <% if @auction.winner.blank? %>
     <% if current_user and current_user.has_role? :admin %>
-    Let's draw
-    <%= link_to 'Draw', draw_auction_path(@auction), method: :post%>
+      <%if @auction.users.empty? %>
+        <h5>Cannot draw, there are no bidders</h5>
+        <% else %>
+          Let's draw
+          <%= link_to 'Draw', draw_auction_path(@auction), method: :post%>
+        <% end %>
     <% else %>
     <%= link_to 'Bid' , bid_auction_path(@auction), method: :post %>
     <% end %>
