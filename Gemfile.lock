@@ -111,6 +111,7 @@ GEM
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    libv8 (3.16.14.15)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -183,6 +184,7 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    ref (2.0.0)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
     rolify (5.1.0)
@@ -197,6 +199,14 @@ GEM
       rspec-support (~> 3.5.0)
     rspec-mocks (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-rails (3.5.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
     sass (3.4.22)
@@ -220,6 +230,9 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.3.11)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
@@ -264,11 +277,13 @@ DEPENDENCIES
   rails (~> 5.0.0)
   ransack
   rolify
+  rspec-rails
   sass-rails (~> 5.0)
   selleo-controller_tests!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.3.11)
+  therubyracer
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
