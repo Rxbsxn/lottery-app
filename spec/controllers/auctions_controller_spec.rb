@@ -60,6 +60,26 @@ RSpec.describe AuctionsController, type: :controller do
     end
   end
 
+  describe '#draw' do
+    let!(:user) { create(:user) }
+    let(:auction) { create(:auction) }
+    let(:call_request) { post :draw, params: { id: auction.id } }
+
+    context 'user sign in' do
+      let(:admin) { create(:admin) }
+      let!(:session) { sign_in admin }
+      before { auction.users << user }
+
+      it { expect { call_request }.to change { auction.reload.winner }.from(nil).to(user) }
+      it_behaves_like 'an action redirecting to', -> { auction_path(auction) }
+    end
+    context 'user no sign in' do
+      before { sign_in user}
+      it { expect { call_request }.to_not change { auction.reload.winner } }
+      it_behaves_like 'an action redirecting to', -> { auctions_path }
+    end
+  end
+
   describe '#bid' do
     let!(:user) { create(:user) }
     let(:auction) { create(:auction) }
@@ -68,7 +88,7 @@ RSpec.describe AuctionsController, type: :controller do
     context 'user sign in' do
       let!(:session) { sign_in user }
       it { expect { call_request }.to change { auction.users.count }.from(0).to(1) }
-      it_behaves_like 'an action redirecting to', -> { "/auctions/#{auction.id}" }
+      it_behaves_like 'an action redirecting to', -> { auction_path(auction) }
     end
     context 'user no sign in' do
       it { expect { call_request }.to_not change { auction.users.count } }
