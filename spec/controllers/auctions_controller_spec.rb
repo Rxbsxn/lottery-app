@@ -21,15 +21,22 @@ RSpec.describe AuctionsController, type: :controller do
     it_behaves_like 'an action rendering view'
   end
 
-  describe '#create', :focus do
-    context 'user sign in' do
-      let!(:session) { sign_in user }
-      let(:attributes) { attributes_for(:auction) }
-      let(:call_request) { post :create, auction: attributes }
-      it_behaves_like 'an action creating object', [:name, :content]
+  describe '#create' do
+    # context 'user sign in' do
+    let!(:user) { create(:user) }
+    let!(:admin) { create(:admin) }
+    let(:attributes) { attributes_for(:auction) }
+    let(:call_request) { post :create, auction: attributes }
+    context 'no sesion' do
+      it_behaves_like 'an action creating object', expect_failure: true
     end
-    context 'user no sign in' do
-      it_behaves_like 'an action redirect_to', -> { '/users/sign_in'}
+    context 'regular user' do
+      before { sign_in user }
+      it_behaves_like 'an action creating object', expect_failure: true
+    end
+    context 'admin' do
+      before { sign_in admin }
+      it_behaves_like 'an action creating object'
     end
   end
 
@@ -37,16 +44,20 @@ RSpec.describe AuctionsController, type: :controller do
     let!(:auction) { create(:auction) }
     let!(:admin) { create(:admin) }
     let(:call_request) { delete :destroy, id: auction.id }
-    it_behaves_like 'an action destroying object' do
-      let(:object) { :admin }
+    context 'no session' do
+      it_behaves_like 'an action destroying object', expect_failure: true
     end
-  end
 
-  describe '#update' do
-    let!(:auction) { create(:auction)}
-    let(:attributes) { auction_params(:auction)}
-    let(:call_request) { patch :update, id: auction.id, auction: attributes }
-    it_behaves_like 'an action updating object', [:name, :content]
+    context 'regular user' do
+      let(:user) { create(:user) }
+      before { sign_in user }
+      it_behaves_like 'an action destroying object', expect_failure: true
+    end
+
+    context 'as admin' do
+      before { sign_in admin }
+      it_behaves_like 'an action destroying object'
+    end
   end
 
   describe '#bid' do
