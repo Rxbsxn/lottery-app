@@ -3,7 +3,6 @@ class AuctionsController < ApplicationController
 
   before_action :authenticate_user!, only: [:bid]
 
-  before_action :authenticate_user!, only: [:bid]
 
   def index
     @q = Auction.ransack(search_params)
@@ -49,9 +48,6 @@ end
     redirect_to @auction
     end
   end
-
-def place_a_bid(bid, amount)
-end
 
   private
 
