@@ -47,6 +47,7 @@ group :development, :test do
   gem 'pry'
   gem 'ffaker'
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
