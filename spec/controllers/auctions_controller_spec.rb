@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe AuctionsController, type: :controller do
+  let!(:user) { create(:user) }
+  let!(:admin) { create(:admin) }
+  let(:auction) { create(:auction) }
   describe '#index' do
     let!(:auctions) { create_list(:auction, 6).sort_by(&:name) }
 
@@ -16,15 +19,11 @@ RSpec.describe AuctionsController, type: :controller do
     end
   end
   describe '#show' do
-    let(:auction) { create(:auction) }
     let(:call_request) { get :show, params: { id: auction.id } }
     it_behaves_like 'an action rendering view'
   end
 
   describe '#create' do
-    # context 'user sign in' do
-    let!(:user) { create(:user) }
-    let!(:admin) { create(:admin) }
     let(:attributes) { attributes_for(:auction) }
     let(:call_request) { post :create, auction: attributes }
     context 'no sesion' do
@@ -41,15 +40,12 @@ RSpec.describe AuctionsController, type: :controller do
   end
 
   describe '#destroy' do
-    let!(:auction) { create(:auction) }
-    let!(:admin) { create(:admin) }
     let(:call_request) { delete :destroy, id: auction.id }
     context 'no session' do
       it_behaves_like 'an action destroying object', expect_failure: true
     end
 
     context 'regular user' do
-      let(:user) { create(:user) }
       before { sign_in user }
       it_behaves_like 'an action destroying object', expect_failure: true
     end
@@ -61,12 +57,9 @@ RSpec.describe AuctionsController, type: :controller do
   end
 
   describe '#draw' do
-    let!(:user) { create(:user) }
-    let(:auction) { create(:auction) }
     let(:call_request) { post :draw, params: { id: auction.id } }
 
     context 'user sign in' do
-      let(:admin) { create(:admin) }
       let!(:session) { sign_in admin }
       before { auction.users << user }
 
@@ -74,15 +67,13 @@ RSpec.describe AuctionsController, type: :controller do
       it_behaves_like 'an action redirecting to', -> { auction_path(auction) }
     end
     context 'user no sign in' do
-      before { sign_in user}
+      before { sign_in user }
       it { expect { call_request }.to_not change { auction.reload.winner } }
       it_behaves_like 'an action redirecting to', -> { auctions_path }
     end
   end
 
   describe '#bid' do
-    let!(:user) { create(:user) }
-    let(:auction) { create(:auction) }
     let(:call_request) { post :bid, params: { id: auction.id } }
 
     context 'user sign in' do
