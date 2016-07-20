@@ -1,8 +1,9 @@
 class AuctionsController < ApplicationController
-  before_action :is_admin, except: [:index, :show, :bid]
+  before_action :is_admin, except: [:index, :show, :bid, :new]
   before_action :authenticate_user!, only: [:bid]
   expose :auctions, -> { Auction.all }
   expose :auction
+  decorates_assigned :auctions
 
   def index
     @q = Auction.ransack(search_params)
@@ -36,15 +37,15 @@ class AuctionsController < ApplicationController
   end
 
   def show
-    auction = Auction.find(params[:id])
+    auction = AuctionDecorator.find(params[:id])
   end
 
   def bid
     auction = Auction.find(params[:id])
     auction.users << current_user
     redirect_to auction
-    end
   end
+end
 
   private
 

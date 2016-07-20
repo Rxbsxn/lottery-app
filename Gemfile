@@ -20,6 +20,10 @@ gem 'will_paginate'
 gem 'carrierwave'
 gem 'simple_form'
 gem 'decent_exposure'
+gem 'draper'
+gem 'decent_decoration'
+gem 'friendly_id'
+gem 'activemodel-serializers-xml'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
