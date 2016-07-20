@@ -61,9 +61,9 @@ RSpec.describe AuctionsController, type: :controller do
 
     context 'user sign in' do
       let!(:session) { sign_in admin }
-      before { auction.users << user }
+      before { auction.users << user << create(:user) }
 
-      it { expect { call_request }.to change { auction.reload.winner }.from(nil).to(user) }
+      it { expect { call_request }.to change { auction.reload.winner }.from(nil) }
       it_behaves_like 'an action redirecting to', -> { auction_path(auction) }
     end
     context 'user no sign in' do

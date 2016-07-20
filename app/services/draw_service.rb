@@ -4,29 +4,29 @@ class DrawService
     @errors = []
   end
 
-  def erorrs
+  def errors
     @errors
   end
 
   def call
-    if enough_bids?
-      shuffle_winner
-    else
-      @errors << 'Error'
-    end
+    shuffle_winner if enough_bids?
   end
 
-  private
+  # private
 
   def shuffle_winner
     # users = auction.users.all
-    winner = auction.users.order('RANDOM()').last
-    auction.winner = winner
-    auction.save
-    redirect_to auction
+    winner = @auction.users.order('RANDOM()').last
+    @auction.winner = winner
+    @auction.save
   end
 
   def enough_bids?
-    auction.users.count >= 2 ? true : false
+    if @auction.users.count >= 2
+      true
+    else
+      @errors << 'Error'
+      false
+    end
   end
 end

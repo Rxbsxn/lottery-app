@@ -14,7 +14,9 @@ class AuctionsController < ApplicationController
 
   def draw
     auction = Auction.find(params[:id])
-    DrawService.new(auction)
+    draw_service = DrawService.new(auction)
+    flash[:error] = draw_service.errors unless draw_service.call
+    redirect_to auction
   end
 
   def create
@@ -24,7 +26,7 @@ class AuctionsController < ApplicationController
     else
       render 'new'
     end
-end
+  end
 
   def destroy
     @auction = Auction.find(params[:id])
