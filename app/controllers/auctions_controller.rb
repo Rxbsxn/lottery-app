@@ -1,7 +1,8 @@
 class AuctionsController < ApplicationController
   before_action :is_admin, except: [:index, :show, :bid]
-
   before_action :authenticate_user!, only: [:bid]
+  expose :auctions, -> { Auction.all }
+  expose :auction
 
   def index
     @q = Auction.ransack(search_params)
@@ -9,7 +10,7 @@ class AuctionsController < ApplicationController
   end
 
   def new
-    @auction = Auction.new
+    auction = Auction.new
   end
 
   def draw
@@ -20,8 +21,8 @@ class AuctionsController < ApplicationController
   end
 
   def create
-    @auction = Auction.new(auction_params)
-    if @auction.save
+    auction = Auction.new(auction_params)
+    if auction.save
       redirect_to auctions_path
     else
       render 'new'
@@ -29,19 +30,19 @@ class AuctionsController < ApplicationController
   end
 
   def destroy
-    @auction = Auction.find(params[:id])
-    @auction.destroy
+    auction = Auction.find(params[:id])
+    auction.destroy
     redirect_to auctions_path
   end
 
   def show
-    @auction = Auction.find(params[:id])
+    auction = Auction.find(params[:id])
   end
 
   def bid
-    @auction = Auction.find(params[:id])
-    @auction.users << current_user
-    redirect_to @auction
+    auction = Auction.find(params[:id])
+    auction.users << current_user
+    redirect_to auction
     end
   end
 

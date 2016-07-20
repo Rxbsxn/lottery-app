@@ -19,6 +19,7 @@ gem 'ransack'
 gem 'will_paginate'
 gem 'carrierwave'
 gem 'simple_form'
+gem 'decent_exposure'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
