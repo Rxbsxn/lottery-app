@@ -3,7 +3,6 @@ class AuctionsController < ApplicationController
 
   before_action :authenticate_user!, only: [:bid]
 
-
   def index
     @q = Auction.ransack(search_params)
     @auctions = @q.result.page(params[:page])
@@ -15,11 +14,7 @@ class AuctionsController < ApplicationController
 
   def draw
     auction = Auction.find(params[:id])
-    users = auction.users.all
-    winner = users.order('RANDOM()').last
-    auction.winner = winner
-    auction.save
-    redirect_to auction
+    DrawService.new(auction)
   end
 
   def create
@@ -39,7 +34,6 @@ end
 
   def show
     @auction = Auction.find(params[:id])
-    # @bid = Bid.new
   end
 
   def bid
