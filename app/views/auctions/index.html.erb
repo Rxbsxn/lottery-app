@@ -46,13 +46,13 @@
     </center>
     <div class="search">
         <p>
-            <%= search_form_for @q do |f| %>
+            <%= search_form_for q do |f| %>
             <%= f.search_field :name_cont %>
             <%= f.submit  %>
             <% end %>
         </p>
     </div>
-    <% @auctions.each do |auction| %>
+    <% auctions.each do |auction| %>
     <div class="demo-card-square mdl-card mdl-shadow--2dp">
         <% if auction.imageUrl.blank? %>
         <img src="http://www.xarchitekten.at/img/start/xstart.gif">
@@ -85,7 +85,7 @@
 <br>
 <% end %>
 <div clas="paginate">
-    <%= paginate @auctions %>
+    <%= paginate auctions %>
 </div>
 
 <%  if current_user and current_user.has_role? :admin    %>

@@ -24,6 +24,8 @@ gem 'draper'
 gem 'decent_decoration'
 gem 'friendly_id'
 gem 'activemodel-serializers-xml'
+gem 'em-hiredis'
+gem 'redis'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

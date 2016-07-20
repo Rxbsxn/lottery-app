@@ -1,14 +1,9 @@
 class AuctionsController < ApplicationController
   before_action :is_admin, except: [:index, :show, :bid, :new]
   before_action :authenticate_user!, only: [:bid]
-  expose :auctions, -> { Auction.all }
-  expose(:auction)
+  expose_decorated :auction
   expose :q, -> { @q = Auction.ransack(search_params) }
-  decorates_assigned :auctions
-
-  def index
-    @auctions = q.result.page(params[:page])
-  end
+  expose_decorated :auctions, -> { auction.result.page(params[:page]) }
 
   def new
     auction = Auction.new
