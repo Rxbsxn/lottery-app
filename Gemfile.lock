@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/drapergem/draper.git
+  revision: 45e18569d9631710f889d75d49f971fb60d5cbcd
+  specs:
+    draper (3.0.0.pre1)
+      actionpack (~> 5.0)
+      activemodel (~> 5.0)
+      activemodel-serializers-xml (~> 1.0)
+      activesupport (~> 5.0)
+      request_store (~> 1.0)
+
+GIT
   remote: https://github.com/Selleo/selleo-controller_tests.git
   revision: 33c94fd41954661c18ceb4c329320d702b201ef8
   specs:
@@ -83,11 +94,6 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    draper (2.1.0)
-      actionpack (>= 3.0)
-      activemodel (>= 3.0)
-      activesupport (>= 3.0)
-      request_store (~> 1.0)
     em-hiredis (0.3.1)
       eventmachine (~> 1.0)
       hiredis (~> 0.6.0)
@@ -300,7 +306,7 @@ DEPENDENCIES
   decent_decoration
   decent_exposure
   devise
-  draper
+  draper!
   em-hiredis
   factory_girl
   factory_girl_rails

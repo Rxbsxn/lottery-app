@@ -16,21 +16,10 @@
 
 <h1>Create new auction</h1>
 <%= simple_form_for auction, html: { multipart: true } do |f| %>
-  <p>
-    <%= f.input :name %><br>
-  </p>
-
-  <p>
+    <%= f.input :name %>
     <%= f.input :content, as: :text %>
-  </p>
-
-  <p>
-    <%= f.file_field :image %><br>
-  </p>
-
-  <p>
+    <%= f.file_field :imageUrl %>
     <%= f.button :submit %>
-  </p>
 <% end %>
 </div>
 </body>

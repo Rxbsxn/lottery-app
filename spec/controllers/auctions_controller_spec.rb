@@ -10,12 +10,13 @@ RSpec.describe AuctionsController, type: :controller do
     context 'first page' do
       before { get :index }
       it { expect(response).to render_template(:index) }
-      it { expect(assigns[:auctions]).to contain_exactly(*auctions[0..5]) }
+      it { expect(controller.auctions).to contain_exactly(*auctions[0..5]) }
     end
+
     context 'search by name' do
-      let(:auction) { create(:auction, name: 'random auction name') }
+      let!(:auction) { create(:auction, name: 'random auction name') }
       before { get :index, params: { q: { name_cont: 'random auction name' } } }
-      it { expect(assigns[:auctions]).to contain_exactly(auction) }
+      it { expect(controller.auctions).to contain_exactly(auction) }
     end
   end
   describe '#show' do

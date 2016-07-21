@@ -46,10 +46,10 @@
         <h5>Cannot draw, there are no bidders</h5>
         <% else %>
           Let's draw
-          <%= link_to 'Draw', draw_auction_path(auction), method: :post%>
+          <%= auction.run_draw_or_bid %>
         <% end %>
     <% else %>
-    <%= link_to 'Bid' , bid_auction_path(auction), method: :post %>
+    <%= auction.run_draw_or_bid %>
     <% end %>
     <% else %>
     <h1>Auction finished</h1>

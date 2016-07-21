@@ -71,11 +71,11 @@
             <div class="johny">
 
                 <% if current_user and current_user.has_role? :admin %>
-                <%= link_to 'Destroy', auction_path(auction), method: :delete, data: { confirm: 'Are you sure?'} %>
-                <%= link_to 'Read more', auction_path(auction) %>
+                <%= auction.delete %>
+                <%= auction.show %>
             <% else %>
                 <div clas='read-more'>
-                    <%= link_to 'Read more', auction_path(auction) %>
+                    <%= auction.show %>
                 </div>
                 <% end %>
             </a>
@@ -84,6 +84,7 @@
 </div>
 <br>
 <% end %>
+
 <div clas="paginate">
     <%= paginate auctions %>
 </div>

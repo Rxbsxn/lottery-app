@@ -1,42 +1,30 @@
 class AuctionsController < ApplicationController
-  before_action :is_admin, except: [:index, :show, :bid, :new]
+  before_action :admin?, except: [:index, :show, :bid, :new]
   before_action :authenticate_user!, only: [:bid]
-  expose_decorated :auction
-  expose :q, -> { @q = Auction.ransack(search_params) }
-  expose_decorated :auctions, -> { auction.result.page(params[:page]) }
-
-  def new
-    auction = Auction.new
-  end
+  expose :q, -> { Auction.ransack(search_params) }
+  expose :auctions, -> { q.result(distinct: true).page(params[:page]).decorate }
+  expose :auction, decorate: ->(auction) { auction.decorate }
 
   def draw
-    auction = Auction.find(params[:id])
     draw_service = DrawService.new(auction)
     flash[:error] = draw_service.errors unless draw_service.call
     redirect_to auction
   end
 
   def create
-    auction = Auction.new(auction_params)
     if auction.save
-      redirect_to auctions_path
+      redirect_to auction_path(auction)
     else
-      render 'new'
+      render :new
     end
   end
 
   def destroy
-    auction = Auction.find(params[:id])
     auction.destroy
     redirect_to auctions_path
   end
 
-  def show
-    auction = AuctionDecorator.find(params[:id])
-  end
-
   def bid
-    auction = Auction.find(params[:id])
     auction.users << current_user
     redirect_to auction
   end
@@ -52,7 +40,7 @@ def search_params
   params.permit(q: [:name_cont])[:q].to_h
 end
 
-def is_admin
+def admin?
   unless  current_user && current_user.has_role?(:admin)
     redirect_to auctions_path
   end
