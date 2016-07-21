@@ -8,5 +8,5 @@
 
 
 40.times do
-  Auction.create(name: FFaker::Product.product_name, content: FFaker::Lorem.sentences.join(' '), imageUrl: FFaker::Avatar.imageUrl)
+  Auction.create(name: FFaker::Product.product_name, content: FFaker::Lorem.sentences.join(' '), imageUrl: FFaker::Avatar.image)
 end

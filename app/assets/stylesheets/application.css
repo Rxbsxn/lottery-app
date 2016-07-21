@@ -13,22 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
- .demo-card-square.mdl-card {
-   width: 320px;
-   height: 320px;
-   margin: auto;
-
- }
- .demo-card-square > .mdl-card__title {
-   color: #fff;
-   background: url('assets/demos/dog.p') bottom right 15% no-repeat #46B6AC;
-}
-
-
-
-.sign-in {
-    margin-left: auto;
-    padding-right: 60px;
-    width: 20px;
-}

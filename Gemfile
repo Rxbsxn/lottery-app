@@ -26,7 +26,8 @@ gem 'friendly_id'
 gem 'activemodel-serializers-xml'
 gem 'em-hiredis'
 gem 'redis'
-gem 'business_process', git: 'https://github.com/Selleo/business_process.git' 
+gem 'business_process', git: 'https://github.com/Selleo/business_process.git'
+gem 'slim-rails'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

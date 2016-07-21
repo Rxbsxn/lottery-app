@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+  title
+  link href="./new.scss" rel="stylesheet" type="text/css"
+body
+  .body-builder
+    h1 Create new auction
+    = simple_form_for auction, html: { multipart: true } do |f|
+      = f.input :name
+      = f.input :content, as: :text
+      = f.file_field :imageUrl
+      = f.button :submit

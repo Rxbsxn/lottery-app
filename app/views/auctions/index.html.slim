@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+  title
+  link href="./index.scss" rel="stylesheet" type="text/css" /
+body
+  center
+    h1 List of auctions
+  .search
+    p
+      = search_form_for q do |f|
+        = f.search_field :name_cont
+        = f.submit
+
+  - auctions.each do |auction|
+    .demo-card-square.mdl-card.mdl-shadow--2dp
+      - if auction.imageUrl.blank?
+        img src="http://www.xarchitekten.at/img/start/xstart.gif" /
+      - else
+        img src="#{auction.imageUrl}" /
+      .mdl-card__title.mdl-card--expand
+        .title
+          h2.mdl-card__title-text= auction.name
+      .mdl-card__supporting-text
+        = auction.content
+      .mdl-card__actions.mdl-card--border
+        .johny
+          - if current_user and current_user.has_role? :admin
+            => auction.delete
+            =< auction.show
+          - else
+            div clas="read-more"
+              = auction.show
+    br/
+
+  div clas="paginate"
+    = paginate auctions
+  - if current_user and current_user.has_role? :admin
+    = link_to 'auctions/new' do
+      div style=("text-align:center; padding-top: 50px;")
+        button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--accent
+          | Add new item to bid

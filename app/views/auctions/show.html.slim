@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+  title
+  link href="./show.scss" rel="stylesheet" type="text/css"
+body
+  .centered
+    br/
+    p
+      img src="#{auction.imageUrl}" /
+    p
+      strong Title:
+      = auction.name
+    p
+      strong Description:
+      = auction.content
+    p
+      - if auction.winner.blank?
+        - if current_user and current_user.has_role? :admin
+          - if auction.users.empty?
+            h5 Cannot draw, there are no bidders
+          - else
+            | Let's draw
+            | \#{auction.run_draw_or_bid}
+        - else
+          = auction.run_draw_or_bid
+      - else
+        h1 Auction finished
+        h2
+          | Winner is #{auction.winner.email}
+    strong Bidders:
+    p
+      - if auction.users.empty?
+        h3 (There are no bidders yet)
+        h4
+          b Be the first!
+      - else
+        - auction.users.each do |user|
+          p
+            = user.email
