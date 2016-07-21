@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 describe DrawService do
-  let(:draw_service) { DrawService.new(auction) }
+  let!(:auction) { create(:auction) }
+  let(:draw_service) { DrawService.new(auction: auction) }
   let!(:user_one) { create(:user) }
   let!(:user_two) { create(:user) }
   let!(:user_three) { create(:user) }
-  let!(:admin) { create(:admin) }
-  let(:auction) { create(:auction) }
 
   describe '#call' do
     context 'can start draw' do

@@ -20,7 +20,7 @@ RSpec.describe AuctionsController, type: :controller do
     end
   end
   describe '#show' do
-    let(:call_request) { get :show, params: { id: auction.id } }
+    let(:call_request) { get :show, params: { id: auction } }
     it_behaves_like 'an action rendering view'
   end
 
@@ -41,7 +41,7 @@ RSpec.describe AuctionsController, type: :controller do
   end
 
   describe '#destroy' do
-    let(:call_request) { delete :destroy, id: auction.id }
+    let(:call_request) { delete :destroy, id: auction }
     context 'no session' do
       it_behaves_like 'an action destroying object', expect_failure: true
     end
@@ -58,7 +58,7 @@ RSpec.describe AuctionsController, type: :controller do
   end
 
   describe '#draw' do
-    let(:call_request) { post :draw, params: { id: auction.id } }
+    let(:call_request) { post :draw, params: { id: auction } }
 
     context 'user sign in as admin' do
       let!(:session) { sign_in admin }
@@ -75,7 +75,7 @@ RSpec.describe AuctionsController, type: :controller do
   end
 
   describe '#bid' do
-    let(:call_request) { post :bid, params: { id: auction.id } }
+    let(:call_request) { post :bid, params: { id: auction } }
 
     context 'user sign in' do
       let!(:session) { sign_in user }

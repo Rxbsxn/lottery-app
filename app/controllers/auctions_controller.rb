@@ -21,7 +21,7 @@ class AuctionsController < ApplicationController
 
   def destroy
     auction.destroy
-    redirect_to auctions_path
+    redirect_to auction_path(auction)
   end
 
   def bid

@@ -10,6 +10,12 @@ GIT
       request_store (~> 1.0)
 
 GIT
+  remote: https://github.com/Selleo/business_process.git
+  revision: 59d5d9def9637e52bfe1f7c0b655015c291f22ea
+  specs:
+    business_process (1.0.4)
+
+GIT
   remote: https://github.com/Selleo/selleo-controller_tests.git
   revision: 33c94fd41954661c18ceb4c329320d702b201ef8
   specs:
@@ -300,6 +306,7 @@ PLATFORMS
 
 DEPENDENCIES
   activemodel-serializers-xml
+  business_process!
   byebug
   carrierwave
   coffee-rails (~> 4.2)
