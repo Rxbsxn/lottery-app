@@ -1,6 +1,7 @@
 class Auction < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: [:slugged, :history]
+  friendly_id :name, use: :slugged
+
   resourcify
   self.per_page = 6
   has_and_belongs_to_many :users
@@ -10,4 +11,3 @@ class Auction < ApplicationRecord
     new_record?
   end
 end
-Auction.find_each(&:save)
