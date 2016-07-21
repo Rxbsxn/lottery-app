@@ -3,7 +3,7 @@ class AuctionsController < ApplicationController
   before_action :authenticate_user!, only: [:bid]
   expose :q, -> { Auction.ransack(search_params) }
   expose :auctions, -> { q.result(distinct: true).page(params[:page]).decorate }
-  expose :auction, decorate: ->(auction) { auction.decorate }
+  expose :auction, decorate: ->(auction) { auction.decorate }, find_by: :slug
 
   def draw
     draw_service = DrawService.new(auction)
