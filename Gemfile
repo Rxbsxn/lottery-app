@@ -29,6 +29,8 @@ gem 'em-hiredis'
 gem 'redis'
 gem 'business_process', git: 'https://github.com/Selleo/business_process.git'
 gem 'slim-rails'
+gem 'ffaker'
+
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -55,7 +57,6 @@ group :development, :test do
   gem 'selleo-controller_tests', git: 'https://github.com/Selleo/selleo-controller_tests.git'
   gem 'guard-rspec'
   gem 'pry'
-  gem 'ffaker'
   gem 'rspec-rails'
   gem 'rails-controller-testing'
   gem 'sqlite3', '~> 1.3.11'
