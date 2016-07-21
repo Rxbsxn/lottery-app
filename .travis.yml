@@ -2,5 +2,5 @@ language: ruby
 sudo: false
 cache: bundler
 rvm:
-  - stable
+  - 2.2
 script: bundle exec rspec --color
